@@ -89,3 +89,10 @@ h3{
   transform: scale(0.98) translateY(1px);
   box-shadow: 0 5px 5px rgba(0,0,0,.15);
 }
+.ui-helper-hidden-accessible{
+  visibility: hidden;
+}
+
+ul{
+  
+}
