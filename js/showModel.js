@@ -1,10 +1,4 @@
 function showDataModule(){
-    var cityNameShow    = document.querySelector('.cityName'); 
-    var temperatureShow = document.querySelector('.temperature'); 
-    var pressureShow    = document.querySelector('.pressure');
-    var humidityShow    = document.querySelector('.humidity');
-    var windSpeedShow   = document.querySelector('.windspeed');
-    var img             = document.querySelector('.weatherimg'); 
     var error           = document.querySelector('.error');
     var table           = document.querySelector('.table');
     
@@ -32,12 +26,14 @@ function showDataModule(){
         }else{
             table.style.visibility = 'visible';
             error.innerHTML='';
-            img.src = 'http://openweathermap.org/img/w/' + wdata.weather[0].icon + '.png';
-            cityNameShow.innerHTML = wdata.name;
-            temperatureShow.innerHTML = Math.round(wdata.main.temp - 273.15) + 'C°';
-            pressureShow.innerHTML = wdata.main.pressure + ' hPa';
-            humidityShow.innerHTML = wdata.main.humidity + ' %';
-            windSpeedShow.innerHTML = wdata.wind.speed + ' m/s';
+            srcimg='http://openweathermap.org/img/w/' + wdata.weather[0].icon + '.png';
+            var showText = '<tr> <td colspan="2"><center><img src="' + srcimg + '"></center></td></tr>';
+            showText += '<tr><td>Name:</td><td><p>'+wdata.name+'</p></td></tr>';
+            showText += '<tr><td>Temperature:</td><td><p>' + Math.round(wdata.main.temp - 273.15) + 'C°</p></td></tr>';
+            showText += '<tr><td>Pressure:</td><td><p>'+ wdata.main.pressure + ' hPa</p></td></tr>';
+            showText += '<tr><td>Humidity:</td> <td><p>' + wdata.main.humidity + ' %</p></td></tr>';
+            showText += '<tr><td>Speed of Wind:</td><td><p>' + wdata.wind.speed + ' m/s</p></td></tr>';
+            table.innerHTML = showText;
         }
     }
 
